@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>My Shop</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<!-- ===== HEADER / MENU ===== -->
+<header>
+    <nav class="menu">
+        <a href="{% url 'index' %}">Home</a>
+        <a href="{% url 'about' %}">About</a>
+    </nav>
+</header>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main>
+
+    <h1>Welcome to My Shop</h1>
+    <p class="subtitle">Best products for you</p>
+
+    <!-- ===== NEW ARRIVALS ===== -->
+    <section>
+        <h2>New Arrivals</h2>
+
+        <div class="products">
+            <div class="product">
+                <h3>Product 1</h3>
+                <p>New stylish product</p>
+                <span>$25</span>
+                <button>Buy</button>
+            </div>
+
+            <div class="product">
+                <h3>Product 2</h3>
+                <p>Modern and useful</p>
+                <span>$30</span>
+                <button>Buy</button>
+            </div>
+
+            <div class="product">
+                <h3>Product 3</h3>
+                <p>Top quality item</p>
+                <span>$40</span>
+                <button>Buy</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BEST SELLERS ===== -->
+    <section>
+        <h2>Best Sellers</h2>
+
+        <div class="products">
+            <div class="product">
+                <h3>Product 4</h3>
+                <p>Most popular product</p>
+                <span>$50</span>
+                <button>Buy</button>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <p>© 2025 My Shop</p>
+</footer>
+
+</body>
+</html>

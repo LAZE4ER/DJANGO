@@ -1,0 +1,28 @@
+{%load static %}
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us</title>
+    <link rel="stylesheet" href="{% static 'styles_about.css' %}">
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="{% url 'index' %}">Home</a>
+        <a href="{% url 'about' %}">About</a>
+    </nav>
+</header>
+
+<main>
+    <h1>Про магазин</h1>
+    <p>Наш магазин пропонує сучасні та якісні товари за доступними цінами.</p>
+
+    <h2>Про мене</h2>
+    <p>Мене звати Данило, я веб-розробник та створив цей магазин як навчальний проєкт.</p>
+</main>
+
+</body>
+</html>
