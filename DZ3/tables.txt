@@ -1,0 +1,42 @@
+CREATE TABLE person (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    address VARCHAR(100),
+    school_number INT
+);
+CREATE TABLE school (
+    school_number INT PRIMARY KEY,
+    school_address VARCHAR(100),
+    school_name VARCHAR(100)
+);
+CREATE TABLE class (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    class_number VARCHAR(10),
+    school_number INT,
+    classroom VARCHAR(20)
+);
+INSERT INTO person (first_name, last_name, address, school_number)
+VALUES
+('Данило', 'Скрипець', 'м. Київ, вул. Хрещатик', 145),
+('Іван', 'Петренко', 'м. Київ, вул. Шевченка', 145);
+INSERT INTO school (school_number, school_address, school_name)
+VALUES
+(145, 'м. Київ, вул. Лесі Українки', 'Ліцей №145');
+INSERT INTO class (class_number, school_number, classroom)
+VALUES
+('9-А', 145, 'Кабінет 23'),
+('10-Б', 145, 'Кабінет 30');
+ALTER TABLE person
+ADD class_id INT;
+UPDATE person
+SET class_id = 1
+WHERE first_name = 'Данило';
+ALTER TABLE person
+ADD FOREIGN KEY (school_number) REFERENCES school(school_number);
+
+ALTER TABLE person
+ADD FOREIGN KEY (class_id) REFERENCES class(id);
+
+ALTER TABLE class
+ADD FOREIGN KEY (school_number) REFERENCES school(school_number);
