@@ -25,29 +25,22 @@
     <!-- ===== NEW ARRIVALS ===== -->
     <section>
         <h2>New Arrivals</h2>
-
+{% for item in items %}
         <div class="products">
             <div class="product">
-                <h3>Product 1</h3>
-                <p>New stylish product</p>
-                <span>$25</span>
+            {% if item.photo %}
+    <img src="{{ item.photo.url }}" alt="{{ item.name }}">
+            {% else %}
+    <img src="{% static 'no-image.png' %}" alt="No photo">
+            {% endif %}
+                <h3>{{ item.name }}</h3>
+                <p>{{ item.description }}</p>
+                <span>{{ item.price }}</span>
                 <button>Buy</button>
             </div>
-
-            <div class="product">
-                <h3>Product 2</h3>
-                <p>Modern and useful</p>
-                <span>$30</span>
-                <button>Buy</button>
-            </div>
-
-            <div class="product">
-                <h3>Product 3</h3>
-                <p>Top quality item</p>
-                <span>$40</span>
-                <button>Buy</button>
-            </div>
+{% endfor %}
         </div>
+            
     </section>
 
     <!-- ===== BEST SELLERS ===== -->

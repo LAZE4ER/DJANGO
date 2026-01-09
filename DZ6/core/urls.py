@@ -16,16 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from about import views
-from django.conf import settings
-from django.conf.urls.static import static
+
+from comments.views import (
+    CommentsListView,
+    CommentDetailView,
+    CommentCreateView,
+    CommentUpdateView,
+    CommentDeleteView,
+)
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='index'),
-    path('about/', views.about, name='about'),
-    path('aboutme/', views.about_me, name='about_me'),
-    path('add_item/', views.add_item, name='add_item'),
+    path('posts/<int:post_id>/comments/', CommentsListView.as_view(), name='comment_list'),
+    path('comments/<int:pk>/', CommentDetailView.as_view(), name='comment_detail'),
+    path('posts/<int:post_id>/comments/create/', CommentCreateView.as_view(), name='comment_create'),
+    path('comments/<int:pk>/update/', CommentUpdateView.as_view(), name='comment_update'),
+    path('comments/<int:pk>/delete/', CommentDeleteView.as_view(), name='comment_delete'),
 ]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Comment</h1>
+
+<p><strong>Author:</strong> {{ comment.author }}</p>
+<p>{{ comment.text }}</p>
+<p>{{ comment.created_at }}</p>
+
+<a href="{% url 'comment_update' comment.id %}">Edit</a>
+
+<form method="post" action="{% url 'comment_delete' comment.id %}">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+</form>
+</body>
+</html>
+
