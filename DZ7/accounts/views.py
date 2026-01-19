@@ -8,7 +8,7 @@ from django.urls import reverse
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 
-
+9
 def password_reset_request(request: HttpRequest) -> HttpResponse:
     if request.method == "POST":
         form = PasswordResetForm(request.POST)

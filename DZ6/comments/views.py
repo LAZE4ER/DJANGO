@@ -12,7 +12,7 @@ from .models import Comment, Post, Tag
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST, require_GET
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.shortcuts import redirect
 class CommentsListView(ListView):
     model = Comment
     template_name = "comments/comments_list.html"
@@ -36,7 +36,7 @@ class CommentDetailView(DetailView):
 
 
 
-class CommentCreateView(CreateView, LoginRequiredMixin):
+class CommentCreateView(LoginRequiredMixin,CreateView):
     model = Comment
     template_name = "comments/comment_form.html"
     fields = [ 'text']
@@ -47,13 +47,13 @@ class CommentCreateView(CreateView, LoginRequiredMixin):
         form.instance.author = self.request.user
         return super().form_valid(form)
     
-class CommentUpdateView(UpdateView, LoginRequiredMixin):
+class CommentUpdateView(LoginRequiredMixin, UpdateView):
     model = Comment
     template_name = "comments/comment_form.html"
     fields = ['text']
     success_url = '/comments/'
 
-class CommentDeleteView(DeleteView, LoginRequiredMixin):
+class CommentDeleteView(LoginRequiredMixin, DeleteView):
     model = Comment
     template_name = "comments/comment_confirm_delete.html"
     success_url = '/comments/'
