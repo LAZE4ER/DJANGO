@@ -2,7 +2,7 @@ from email.message import EmailMessage
 from django.shortcuts import redirect, render
 from django.core.mail import send_mail
 from .forms import UserRegisterationForm
-from ..core import settings
+from core import settings
 from django.template.loader import render_to_string
 # Create your views here.
 def register(request):
@@ -30,7 +30,7 @@ def register(request):
             )
             email.content_subtype = "html"
             email.send()
-            return redirect('login')
+            return redirect('index')
         else:
             form = UserRegisterationForm()
     return render(request, 'users/registration.html', {'form': form})  
