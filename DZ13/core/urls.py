@@ -16,9 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from rest import views
+from django.urls import include
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/courses/', views.CourseListCreateAPIView.as_view(), name='course-list-create'),
-    path('api/courses/<int:pk>/', views.CourseDetailAPIView.as_view(), name='course-detail'),
+    path('', include('ajax.urls')),
 ]
